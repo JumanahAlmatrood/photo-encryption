@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Decrypt Photo</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-5">Decrypt Your Photo</h2>
+        <form action="/decrypt" method="POST">
+            <div class="form-group">
+                <label for="filename">Encrypted File Name:</label>
+                <input type="text" class="form-control" id="filename" name="filename" placeholder="Example.png" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Decrypt Photo</button>
+        </form>
+        {% if decrypted_image %}
+        <div class="alert alert-success mt-4 text-center">Decrypted image displayed successfully!</div>
+        <img src="{{ decrypted_image }}" alt="Decrypted Image" class="img-fluid mt-3">
+        {% endif %}
+        {% if message %}
+        <div class="alert alert-danger mt-4 text-center">{{ message }}</div>
+        {% endif %}
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

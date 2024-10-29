@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Encrypt Photo</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-5">Upload and Encrypt Your Photo</h2>
+        <form action="/encrypt" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose Photo:</label>
+                <input type="file" class="form-control" id="file" name="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Encrypt Photo</button>
+        </form>
+        {% if message %}
+        <div class="alert alert-success mt-4 text-center">{{ message }}</div>
+        {% endif %}
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
