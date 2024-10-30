@@ -1,12 +1,10 @@
-# شذا حملي هذه المكتبات 
-# pip install Flask cryptography Pillow
-
-from flask import Flask, request, render_template, redirect, url_for, send_file
+from flask import Flask, request, render_template, redirect, url_for
 import os
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 from PIL import Image
 import io
+import base64
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploaded_photos'
@@ -71,15 +69,10 @@ def decrypt_photo():
 
         if os.path.exists(encrypted_path):
             # Decrypt the image
-            decrypted_image = decrypt_file(encrypted_path)
-
-            # Open the image using PIL
-            image = Image.open(io.BytesIO(decrypted_image))
-            # Display the image
-            image.show()
-
-            # No need to save the image on the system, you can send it directly
-            return render_template('decrypt.html', message="Image decrypted and displayed.")
+            decrypted_data = decrypt_file(encrypted_path)
+            
+            # Convert decrypted data to base64 for HTML display
+            decrypted_image = base64.b64encode(decrypted_data).decode('utf-8')
         else:
             message = "Decryption failed. Make sure the filename is correct."
 
