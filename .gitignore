@@ -1,2 +1,7 @@
 /.venv
 /venv
+uploaded_photos/*
+!uploaded_photos/.gitkeep
+
+encrypted_photos/*
+!encrypted_photos/.gitkeep
