@@ -16,13 +16,16 @@
             </div>
             <button type="submit" class="btn btn-success btn-block">Decrypt Photo</button>
         </form>
+        
         {% if decrypted_image %}
         <div class="alert alert-success mt-4 text-center">Decrypted image displayed successfully!</div>
-        <img src="{{ decrypted_image }}" alt="Decrypted Image" class="img-fluid mt-3">
+        <img src="data:image/png;base64,{{ decrypted_image }}" alt="Decrypted Image" class="img-fluid mt-3">
         {% endif %}
+
         {% if message %}
         <div class="alert alert-danger mt-4 text-center">{{ message }}</div>
         {% endif %}
+        
         <div class="text-center mt-4">
             <a href="/" class="btn btn-secondary">Back to Home</a>
         </div>
